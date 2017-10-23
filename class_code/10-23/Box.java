@@ -67,6 +67,12 @@ public class Box {
    * Gets the number of inner boxes inside this box
    */
   public int getNumberOfInnerBoxes() {
+	  // base case -> no innerBox
+	  if (innerBox == null) {
+		  return 0;
+	  } else {
+		  return 1 + innerBox.getNumberOfInnerBoxes();
+	  }
   }
 
 
@@ -75,6 +81,13 @@ public class Box {
    * @param g the graphics context to use
    */
   public void draw(Graphics g) {
+	  g.setColor(color);
+	  g.drawRect(centerX - width / 2, centerY - height / 2, width, height);
+	  // inner box?
+	  if (innerBox != null) {
+		  innerBox.draw(g);
+	  }
+	  
   }
 
   /**
