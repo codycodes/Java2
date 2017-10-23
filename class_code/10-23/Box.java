@@ -96,7 +96,10 @@ public class Box {
    * @return a string representation of this box.
    */
   public String toString() {
-	return null;
+	  // %d -> to display an integer (d stands for decimal)
+	  // %s -> to display a string
+	return String.format("center = (%d,%d), width = %d, height = %d, color = %s, inner boxes = %d",
+			centerX, centerY, width, height, color, getNumberOfInnerBoxes());
   }
 }
 
