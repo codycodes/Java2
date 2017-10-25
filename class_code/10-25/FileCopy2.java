@@ -14,7 +14,7 @@ public class FileCopy2 {
 		// number of bytes read
 		int n;
 		while ((n = in.read(data)) != -1) {
-			out.write(data);
+			out.write(data, 0, n); // write to n so that we know exactly how many we need
 		}
 		in.close();
 		out.close();
