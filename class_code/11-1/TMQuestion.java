@@ -44,6 +44,22 @@ public class TMQuestion {
 		}
 		
 		return q;
+		
 	}
 
+	/**
+	 * Returns the full question as a string
+	 */
+	@Override
+	public String toString() {
+		String s = number + "\n"; 
+		for (String line : text) {
+			s += line + "\n";
+		}
+		s += "-----\n";
+		for (String a : answers.keySet()) {
+			s += a + ": " + answers.get(a) + "\n";
+		}
+		return s;
+	}
 }
