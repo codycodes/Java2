@@ -24,7 +24,22 @@ public class TMCourse {
 		TMCourse course = new TMCourse();
 		course.title = scan.nextLine();
 		course.questions = new TreeMap<Integer, TMQuestion>();
-		
+		while (scan.hasNextLine()) {
+			TMQuestion q = TMQuestion.readQuestion(scan);
+			course.questions.put(q.getNumber(), q);
+		}
 		return course;
+	}
+	
+	/**
+	 * Returns the full description of the course as a string
+	 */
+	@Override
+	public String toString() {
+		String s = title + "\n";
+		for (Integer n : questions.keySet()) {
+			s += questions.get(n) + "\n";
+		}
+		return s;
 	}
 }

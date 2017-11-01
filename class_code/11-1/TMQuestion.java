@@ -62,4 +62,8 @@ public class TMQuestion {
 		}
 		return s;
 	}
+	
+	public int getNumber() {
+		return number;
+	}
 }
