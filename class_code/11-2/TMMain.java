@@ -8,6 +8,8 @@ public class TMMain {
 		Scanner scan = new Scanner(new File("JavaReview.txt"));
 		TMCourse course = TMCourse.readCourse(scan);
 		System.out.println(course);
+		course.run();
+		scan.close();
 	}
 
 }

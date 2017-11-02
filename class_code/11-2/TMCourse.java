@@ -59,7 +59,13 @@ public class TMCourse {
 			// update current to the next question
 			Integer next = current.getNextQuestionNumber(ans);
 			current = questions.get(next);
-			
-		} while (??);
-	}
+			if (next == null) {
+				System.out.println("I don't understand!");
+			} else if (next == 0) {
+				break; // makes this loop not infinite
+			} else {
+				current = questions.get(next);
+			}
+		} while (true); // "infinite"
+ 	}
 }
