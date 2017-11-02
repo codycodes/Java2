@@ -37,7 +37,7 @@ public class TMQuestion {
 		t.toArray(q.text);
 		// possible answers
 		q.answers = new HashMap<String, Integer>();
-		while (scan.hasNextLine() && (line = scan.nextLine()).trim().isEmpty()) {
+		while (scan.hasNextLine() && (line = scan.nextLine()).trim().length() > 1) {
 			// format example: "true: 5"
 			String[] parts = line.split(":\\s*");
 			q.answers.put(parts[0].trim(), Integer.parseInt(parts[1].trim()));

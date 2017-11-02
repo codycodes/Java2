@@ -26,6 +26,7 @@ public class TMCourse {
 		course.questions = new TreeMap<Integer, TMQuestion>();
 		while (scan.hasNextLine()) {
 			TMQuestion q = TMQuestion.readQuestion(scan);
+			System.out.println(q);
 			course.questions.put(q.getNumber(), q);
 		}
 		return course;
