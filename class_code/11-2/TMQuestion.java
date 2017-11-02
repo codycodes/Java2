@@ -46,6 +46,39 @@ public class TMQuestion {
 		return q;
 		
 	}
+	
+	/**
+	 * Returns the number of the question
+	 * @return
+	 */
+	public int getNumber() {
+		return number;
+	}
+	
+	/**
+	 * Returns the text of the question
+	 * @return
+	 */
+	public String getText() {
+		String s = "";
+		for (String line : text) {
+			s += line + "\n";
+		}
+		return s;
+	}
+	
+	/**
+	 * Returns the next question number given an answer
+	 * @param answer
+	 * @return
+	 */
+	public Integer getNextQuestionNumber(String answer) {
+		if (answers.containsKey(answer)) {
+			return answers.get(answer);
+		} else {
+			return null;
+		}
+	}
 
 	/**
 	 * Returns the full question as a string
@@ -61,9 +94,5 @@ public class TMQuestion {
 			s += a + ": " + answers.get(a) + "\n";
 		}
 		return s;
-	}
-	
-	public int getNumber() {
-		return number;
 	}
 }
