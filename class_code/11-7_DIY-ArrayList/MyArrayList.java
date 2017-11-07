@@ -29,18 +29,21 @@ public class MyArrayList<E> implements MyList<E> {
 	 * Constructs a MyArrayList with a default capacity
 	 */
 	public MyArrayList() {
+		this(DEFAULT_CAPACITY);
 	}
 
 	/**
 	 * Returns the number of elements in this list.
 	 */
 	public int size() {
+		return this.size;
 	}
 
 	/**
 	 * Returns true if this list contains no elements.
 	 */
 	public boolean isEmpty() {
+		return size == 0;
 	}
 
 	/**
