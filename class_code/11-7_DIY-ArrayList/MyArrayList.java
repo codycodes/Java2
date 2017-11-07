@@ -59,8 +59,13 @@ public class MyArrayList<E> implements MyList<E> {
 			for (int i = 0; i < items.length; i++) {
 				temp[i] = items[i];
 			}
+			items = temp;
+			
 			// or use a library method of Java
 			Arrays.copyOf(items, items.length + DEFAULT_CAPACITY);
+			// other example
+			System.arraycopy(items, 0, temp, 0, items.length);
+			
 		}
 		// add the new element
 	}
