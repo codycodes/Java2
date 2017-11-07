@@ -68,18 +68,28 @@ public class MyArrayList<E> implements MyList<E> {
 			
 		}
 		// add the new element
+		items[this.size] = o;
+		size ++;
+		return true; // must return something because Collections.
 	}
 
 	/**
 	 * Empties this List
 	 */
 	public void clear() {
+		size = 0;
+		// running GC is optional
+		items = (E[]) new Object[DEFAULT_CAPACITY];
 	}
 
 	/**
 	 * Returns the element at the specified position in this list.
 	 */
 	public E get(int index) {
+		if (index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException("index = " + index);
+		}
+		return items[index];
 	}
 
 	/**
