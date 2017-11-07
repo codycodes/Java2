@@ -96,13 +96,25 @@ public class MyArrayList<E> implements MyList<E> {
 	 * Returns the index of the specified element (-1 if there is no match)
 	 */
 	public int indexOf(Object o) {
+
 		// If o is null (look for a null element in the array)
 		if (o == null) {
+			for (int i = 0; i < size; i++) {
+				if (o == items[i]) {
+					return i;
+				}
+			}
 		} else // o is an object (use equals)
 		{
+			for (int i = 0; i < size; i++) {
+				if (o.equals(items[i])) {
+					return i;
+				}
+			}
 		}
 
 		// If we get here, o is not in the list
+		return -1;
 	}
 
 	/**
@@ -110,6 +122,7 @@ public class MyArrayList<E> implements MyList<E> {
 	 */
 	public boolean contains(Object o) {
 		// easy with indexOf
+		return indexOf(o) != -1;
 	}
 
 	/**
