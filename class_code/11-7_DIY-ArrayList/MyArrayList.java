@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -52,7 +53,15 @@ public class MyArrayList<E> implements MyList<E> {
 	public boolean add(E o) {
 		// If there is no room in the array items
 		// Make room for the new element
-
+		if (size == items.length) {
+			E[] temp = (E[]) new Object[items.length + DEFAULT_CAPACITY];
+			// make the copy by hand
+			for (int i = 0; i < items.length; i++) {
+				temp[i] = items[i];
+			}
+			// or use a library method of Java
+			Arrays.copyOf(items, items.length + DEFAULT_CAPACITY);
+		}
 		// add the new element
 	}
 
