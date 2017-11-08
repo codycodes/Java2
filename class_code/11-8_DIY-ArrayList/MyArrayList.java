@@ -177,14 +177,38 @@ public boolean equals(Object o)
     {
         if (o instanceof MyArrayList) {
             // o is an ArrayList
-
+        		MyArrayList<E> list = (MyArrayList<E>) o;
             // if the number of elements is not the same, this and o are not the
 			// same
-
+        		if (list.size != size) {
+        			return false;
+        		}
+        		
+//        		boolean b = true;
+//        		for (int i = 0; i < size && b; i++) {
+//        			if (items[i] == null) {
+//        				b &= (list.items[i] == null);
+//        			} else {
+//        				b &= (items[i].equals(list.items[i]));
+//        			}
+//        		}
+//        		return b;
+        		
             // Check the elements one by one
+        		for (int i = 0; i < size; i++) {
+        			if (items[i] == null) {
+        				if (list.items[i] != null) {
+        					return false;
+        				}
+        			} else {
+        				if (!items[i].equals(list.items[i])) {
+        					return false;
+        				}
+        			}
+        		}
 
             // At this point, the lists are equal
-
+        		return true;
         }
 		else {
 			return false;
