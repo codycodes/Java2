@@ -222,6 +222,9 @@ public boolean equals(Object o)
 		//index of the next element to visit
 		private int index = 0;
 		
+		private boolean nextCalled;
+		
+		
 		/**
 		 * Create an iterator for a MyArrayList
 		 */
@@ -243,6 +246,7 @@ public boolean equals(Object o)
 			if (!hasNext()) {
 				throw new NoSuchElementException();
 			}
+			nextCalled = true;
 			index++;
 			int lastIndex = index - 1;
 			return items[lastIndex];
@@ -252,6 +256,9 @@ public boolean equals(Object o)
 		 * Removes the last object returned by next
 		 */
 		public void remove() {
+			if (!nextCalled) {
+				throw new IllegalStateException();
+			}
 		}
 		
 		private void m() {
