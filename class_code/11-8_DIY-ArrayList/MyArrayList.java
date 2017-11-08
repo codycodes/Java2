@@ -259,6 +259,8 @@ public boolean equals(Object o)
 			if (!nextCalled) {
 				throw new IllegalStateException();
 			}
+			nextCalled = false;
+			MyArrayList.this.remove(index - 1);
 		}
 		
 		private void m() {

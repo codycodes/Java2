@@ -14,7 +14,7 @@ public class TestMyList {
 		MyList<Integer> l = new MyArrayList<Integer>();
 		test(l);
 		System.out.println();
-		l = new MyLinkedList<Integer>();
+		//l = new MyLinkedList<Integer>();
 		System.out.println("\nTest the LinkedList implementation");
 		test(l);
 	}
