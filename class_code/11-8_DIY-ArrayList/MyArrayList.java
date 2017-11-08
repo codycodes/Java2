@@ -133,8 +133,10 @@ public class MyArrayList<E> implements MyList<E> {
 			throw new IndexOutOfBoundsException("index = " + index);
 		}
 		for (int i = index; i <= size - 2; i++) {
-			items[i] = items[i + 1]
+			items[i] = items[i + 1];
 		}
+		size--;
+		return true;
 
 		// compact the array
 
