@@ -218,36 +218,44 @@ public boolean equals(Object o)
 	 * An inner class to define the iterator
 	 */
 	private class MyIterator implements Iterator<E> {
+
+		//index of the next element to visit
 		private int index = 0;
-
-		private MyArrayList<E> list;
-
-		private int lastIndex = -1; // index of the object most recently visited
-
-		// by next
-
+		
 		/**
 		 * Create an iterator for a MyArrayList
 		 */
-		public MyIterator(MyArrayList<E> list) {
+		public MyIterator() {
+			
 		}
 
 		/**
 		 * Any element left in the list?
 		 */
 		public boolean hasNext() {
+			return index < size;
 		}
 
 		/**
 		 * Returns the current element in the list and move to the next element
 		 */
 		public E next() {
+			if (!hasNext()) {
+				throw new NoSuchElementException();
+			}
+			index++;
+			int lastIndex = index - 1;
+			return items[lastIndex];
 		}
 
 		/**
 		 * Removes the last object returned by next
 		 */
 		public void remove() {
+		}
+		
+		private void m() {
+			
 		}
 	}
 
@@ -257,5 +265,8 @@ public boolean equals(Object o)
 	 * @return an iterator over the elements in this list in proper sequence.
 	 */
 	public Iterator<E> iterator() {
+		MyIterator it = new MyIterator();
+		it.m();
+		return it;
 	}
 }
