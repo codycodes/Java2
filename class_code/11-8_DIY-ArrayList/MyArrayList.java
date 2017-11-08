@@ -158,8 +158,16 @@ public class MyArrayList<E> implements MyList<E> {
 	 * Adds the specified object at the specified location
 	 */
 	public boolean add(int index, E o) {
-
+		if (index < 0 || index > size) {
+			throw new IndexOutOfBoundsException("index = " + index);
+		}
 		// one way: add at the end and then shift the elements around
+		add(o); // to use the code that makes the array bigger if needed
+		for (int i = size - 1; i > index + 1 ; i--) {
+			items[i] = items[i - 1];
+		}
+		items[index] = o;
+		return true;
 	}
 
 	/**
@@ -167,7 +175,7 @@ public class MyArrayList<E> implements MyList<E> {
 	 */
 public boolean equals(Object o)
     {
-        if (/* ???? */) {
+        if (o instanceof MyArrayList) {
             // o is an ArrayList
 
             // if the number of elements is not the same, this and o are not the
