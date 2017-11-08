@@ -149,6 +149,9 @@ public class MyArrayList<E> implements MyList<E> {
 	 */
 	public boolean remove(Object o) {
 		// easy with indexOf and remove
+		// if completely ternary, you'd need to do indexOf twice...
+		int index = indexOf(o);
+		return index != -1 ? remove(index) : false;
 	}
 
 	/**
