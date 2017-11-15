@@ -116,7 +116,7 @@ public class MyLinkedList<E> implements MyList<E> {
 					return i;
 				}
 			}
-			
+			p = p.next;
 		}
 
 		// if we get here, o is not in the list
