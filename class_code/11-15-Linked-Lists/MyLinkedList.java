@@ -103,15 +103,24 @@ public class MyLinkedList<E> implements MyList<E> {
 	 * Returns the index of the specified element (-1 if there is no match)
 	 */
 	public int indexOf(Object o) {
-
-		// If o is null
-		if (o == null) // look for a null element in the list
-		{
-		} else // o is an object (use equals)
-		{
+		Node p = head;
+		for (int i = 0; i < size; i++) {
+			// If o is null
+			if (o == null) // look for a null element in the list
+			{
+				if (p.item == null) {
+					return i;
+				}
+			} else { // o is an object (use equals)
+				if (o.equals(p.item)) {
+					return i;
+				}
+			}
+			
 		}
 
 		// if we get here, o is not in the list
+			return -1;
 	}
 
 	/**
