@@ -43,10 +43,10 @@ public class MyLinkedList<E> implements MyList<E> {
 	public int size() {
 		// without a size field
 		// int count = 0;
-//		for (Node p = head; p != null; p = p.next) {
-//			count++;
-//		}
-//		return count;
+		// for (Node p = head; p != null; p = p.next) {
+		// count++;
+		// }
+		// return count;
 		return size;
 	}
 
@@ -63,7 +63,7 @@ public class MyLinkedList<E> implements MyList<E> {
 	public boolean add(E o) {
 		// If this is the first element in the list
 		Node n = new Node(o);
-		if(isEmpty()) {
+		if (isEmpty()) {
 			head = tail = n;
 		} else {
 			// If the list is not empty, use tail
@@ -72,7 +72,7 @@ public class MyLinkedList<E> implements MyList<E> {
 		// update tail
 		tail = n;
 		// update size
-		size ++;
+		size++;
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class MyLinkedList<E> implements MyList<E> {
 		}
 		// Find it
 		Node p = head;
-		for (int i = 1; i <= index; i ++) {
+		for (int i = 1; i <= index; i++) {
 			p = p.next;
 		}
 		return p.item;
@@ -120,7 +120,7 @@ public class MyLinkedList<E> implements MyList<E> {
 		}
 
 		// if we get here, o is not in the list
-			return -1;
+		return -1;
 	}
 
 	/**
@@ -128,21 +128,37 @@ public class MyLinkedList<E> implements MyList<E> {
 	 */
 	public boolean contains(Object o) {
 		// easy with indexOf
+		int index = indexOf(o);
+		return index != -1;
 	}
 
 	/**
 	 * Removes the element in the List at position index
 	 */
 	public boolean remove(int index) {
-
+		if (index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException("index = " + index);
+		}
 		// Find the corresponding node
-
+		Node prev = null , p = head;
+		for (int i = 1; i <= index; i ++) {
+			prev = p;
+			p = p.next;
+		}
 		// Remove it
 		// Special case for the first node
-
+		if (index == 0) {
+			head = head.next;
+		} else {
+			prev.next = p.next;
+		}
 		// If the last node has been removed, update tail
-
+		if (p == tail) { 
+			tail = prev;
+		}
 		// update size
+		size --;
+		return true;
 	}
 
 	/**
@@ -187,6 +203,7 @@ public boolean equals(Object o)
 			return false;
 	    }
     }
+
 	/**
 	 * An inner class to define the iterator
 	 */
