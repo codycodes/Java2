@@ -88,8 +88,15 @@ public class MyLinkedList<E> implements MyList<E> {
 	 * Returns the element at the specified position in this list.
 	 */
 	public E get(int index) {
-
+		if (index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException("index = " + index);
+		}
 		// Find it
+		Node p = head;
+		for (int i = 1; i <= index; i ++) {
+			p = p.next;
+		}
+		return p.item;
 	}
 
 	/**
