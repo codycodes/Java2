@@ -80,6 +80,8 @@ public class MyLinkedList<E> implements MyList<E> {
 	 */
 	public void clear() {
 		// update head, tail and size
+		size = 0;
+		head = tail = null;
 	}
 
 	/**
