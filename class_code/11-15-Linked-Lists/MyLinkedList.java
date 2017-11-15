@@ -166,6 +166,12 @@ public class MyLinkedList<E> implements MyList<E> {
 	 */
 	public boolean remove(Object o) {
 		// easy with indexOf and remove (but expensive)
+		int index = indexOf(o);
+		if (index != -1) {
+			return remove(index);
+		} else {
+			return false;
+		}
 	}
 
 	/**
