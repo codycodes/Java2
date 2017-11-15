@@ -41,12 +41,20 @@ public class MyLinkedList<E> implements MyList<E> {
 	 * Returns the number of elements in this list.
 	 */
 	public int size() {
+		// without a size field
+		// int count = 0;
+//		for (Node p = head; p != null; p = p.next) {
+//			count++;
+//		}
+//		return count;
+		return size;
 	}
 
 	/**
 	 * Returns true if this list contains no elements.
 	 */
 	public boolean isEmpty() {
+		return size == 0;
 	}
 
 	/**
@@ -54,10 +62,17 @@ public class MyLinkedList<E> implements MyList<E> {
 	 */
 	public boolean add(E o) {
 		// If this is the first element in the list
-
-		// If the list is not empty, use tail
-
+		Node n = new Node(o);
+		if(isEmpty()) {
+			head = tail = n;
+		} else {
+			// If the list is not empty, use tail
+			tail.next = n;
+		}
+		// update tail
+		tail = n;
 		// update size
+		size ++;
 	}
 
 	/**
