@@ -226,12 +226,12 @@ public class MyLinkedList<E> implements MyList<E> {
 						return false;
 					}
 				} else {
-					if (!p.item.equals(q.item)) {
+					if (!p.item.equals(q.item)) { // caller can't be null!
 						return false;
 					}
- 				}
+				}
 			}
-			
+
 			// At this point, the lists are equal
 
 		} else {
@@ -243,13 +243,7 @@ public class MyLinkedList<E> implements MyList<E> {
 	 * An inner class to define the iterator
 	 */
 	private class MyIterator implements Iterator<E> {
-		private Node p;
-
-		private MyLinkedList<E> list;
-
-		private int lastVisitedIndex; // index of the most recently
-
-		// visited node
+		Node p = head;
 
 		/**
 		 * Create an iterator for a MyLinkedList
@@ -262,6 +256,7 @@ public class MyLinkedList<E> implements MyList<E> {
 		 * Any element left in the list?
 		 */
 		public boolean hasNext() {
+			return p != null;
 
 		}
 
@@ -269,6 +264,12 @@ public class MyLinkedList<E> implements MyList<E> {
 		 * Return the current element in the list and move to the next element
 		 */
 		public E next() {
+			if (!hasNext()) {
+				throw new NoSuchElementException();
+			}
+			E item = p.item;
+			p = p.next;
+			return item;
 		}
 
 		/**
@@ -284,5 +285,6 @@ public class MyLinkedList<E> implements MyList<E> {
 	 * @return an iterator over the elements in this list in proper sequence.
 	 */
 	public Iterator<E> iterator() {
+		return new MyIterator();
 	}
 }
