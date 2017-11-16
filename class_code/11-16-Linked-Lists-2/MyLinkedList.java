@@ -244,7 +244,7 @@ public class MyLinkedList<E> implements MyList<E> {
 	 */
 	private class MyIterator implements Iterator<E> {
 		Node p = head, prev = null, prevprev = null;
-
+		boolean nextCalled;
 		/**
 		 * Create an iterator for a MyLinkedList
 		 */
@@ -267,6 +267,7 @@ public class MyLinkedList<E> implements MyList<E> {
 			if (!hasNext()) {
 				throw new NoSuchElementException();
 			}
+			nextCalled = true;
 			E item = p.item;
 			prevprev = prev;
 			prev = p;
@@ -278,12 +279,24 @@ public class MyLinkedList<E> implements MyList<E> {
 		 * Remove the object currently pointed at by the iterator
 		 */
 		public void remove() {
+			if (!nextCalled) {
+				throw new IllegalStateException();
+			}
+			nextCalled = false;
 			// remove the node pointed at by prev
 			if (prevprev != null) {
 				prevprev.next = prev;
 				prev = prevprev;
-				prevprev = null;
+			} else {
+				head = head.next; // skip the first one
+				prev = null;
 			}
+			if (p == null) {
+				// we just removed the last one
+				tail = prevprev;
+			}
+			prevprev = null;
+			size--;
 		}
 	}
 
