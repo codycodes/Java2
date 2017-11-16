@@ -243,7 +243,7 @@ public class MyLinkedList<E> implements MyList<E> {
 	 * An inner class to define the iterator
 	 */
 	private class MyIterator implements Iterator<E> {
-		Node p = head;
+		Node p = head, prev = null, prevprev = null;
 
 		/**
 		 * Create an iterator for a MyLinkedList
@@ -268,6 +268,8 @@ public class MyLinkedList<E> implements MyList<E> {
 				throw new NoSuchElementException();
 			}
 			E item = p.item;
+			prevprev = prev;
+			prev = p;
 			p = p.next;
 			return item;
 		}
@@ -276,6 +278,12 @@ public class MyLinkedList<E> implements MyList<E> {
 		 * Remove the object currently pointed at by the iterator
 		 */
 		public void remove() {
+			// remove the node pointed at by prev
+			if (prevprev != null) {
+				prevprev.next = prev;
+				prev = prevprev;
+				prevprev = null;
+			}
 		}
 	}
 
