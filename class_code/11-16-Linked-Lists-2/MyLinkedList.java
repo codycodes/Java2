@@ -201,30 +201,43 @@ public class MyLinkedList<E> implements MyList<E> {
 			tail = n;
 		}
 		// Update size
-		size ++;
+		size++;
 		return true;
 	}
 
 	/**
 	 * Is this List equal to the specified object?
 	 */
-public boolean equals(Object o)
-    {
-        if (/* ??? */) {
-            // o is an ArrayList
+	public boolean equals(Object o) {
+		if (o instanceof MyLinkedList) {
+			// o is a MyLinkedList
+			MyLinkedList<E> list = (MyLinkedList<E>) o;
 
-            // if the number of elements is not the same, this and o are not the
+			// if the number of elements is not the same, this and o are not the
 			// same
+			if (list.size != this.size) {
+				return false;
+			}
 
-            // Check the elements one by one
+			// Check the elements one by one
+			for (Node p = head, q = list.head; p != null; p = p.next, q = q.next) {
+				if (p.item == null) { // why not just if (p.item == null && q.item != null) {return false;}
+					if (q.item != null) {
+						return false;
+					}
+				} else {
+					if (!p.item.equals(q.item)) {
+						return false;
+					}
+ 				}
+			}
+			
+			// At this point, the lists are equal
 
-            // At this point, the lists are equal
-
-        }
-		else {
+		} else {
 			return false;
-	    }
-    }
+		}
+	}
 
 	/**
 	 * An inner class to define the iterator
