@@ -49,6 +49,11 @@ public class SortingAlgorithms {
 	 * print with a SortingAlgorithms)
 	 */
 	public String toString() {
+		if (a.length <= 10) {
+			return Arrays.toString(a);
+		} else {
+			return "";
+		}
 	}
 
 	/**
