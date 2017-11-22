@@ -15,7 +15,7 @@ public class BinarySearch {
 				return mid;
 			}
 		}
-		return -(??) - 1; // -insertion point - 1
+		return -(first) - 1; // -insertion point - 1
 	}
 
 }
