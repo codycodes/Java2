@@ -60,6 +60,9 @@ public class SortingAlgorithms {
 	 * Sort the array with insert sort
 	 */
 	public void insertSort() {
+		for (int i = 1; i < a.length; i++) {
+			insert(i);
+		}
 	}
 
 	/**
@@ -67,6 +70,11 @@ public class SortingAlgorithms {
 	 * to i
 	 */
 	private void insert(int i) {
+		int temp = a[i], j;
+		for (j = i - 1; j >= 0 && a[j] > temp; j--) {
+			a[j + 1] = a[j];
+		}
+		a[j + 1] = temp;
 	}
 
 	/**
