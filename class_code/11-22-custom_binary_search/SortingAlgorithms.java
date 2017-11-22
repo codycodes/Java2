@@ -36,7 +36,7 @@ public class SortingAlgorithms {
 		// Create a
 		a = new int[n];
 		// Fill a with random integers (between 0 and 10^MAXIMUM_NUMBER_OF_DIGITS-1)
-		for (int i = 0; i < a.length; i ++) {
+		for (int i = 0; i < a.length; i++) {
 			a[i] = (int) (Math.random() * Math.pow(10, MAXIMUM_NUMBER_OF_DIGITS - 1));
 		}
 		// Initialize initialArray and make a copy of a in initialArray
@@ -81,6 +81,17 @@ public class SortingAlgorithms {
 	 * Sort the array with bubble sort
 	 */
 	public void bubbleSort() {
+		boolean swap = true;
+		for (int pass = 1; pass < a.length && swap; pass++) {
+			swap = false;
+			for (int i = 0; i < a.length - pass; i++)
+				if (a[i] > a[i + 1]) {
+					swap = true;
+					int temp = a[i];
+					a[i] = a[i + 1];
+					a[i + 1] = temp;
+				}
+		}
 	}
 
 	/**
