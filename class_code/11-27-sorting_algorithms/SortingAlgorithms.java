@@ -114,7 +114,7 @@ public class SortingAlgorithms {
 			divideInTwoSortAndMerge(mid + 1, last);
 			// Merge sorted halves
 			merge(first, mid, last);
-			
+
 		}
 		// else
 		// Base case: nothing to do
@@ -131,7 +131,7 @@ public class SortingAlgorithms {
 
 		// Allocate a temp array on the heap
 		// temp must be big enough to receive the two halves of A
-		int[] temp = new int[last-first + 1];
+		int[] temp = new int[last - first + 1];
 
 		// Index for temp
 		int index = 0;
@@ -144,12 +144,25 @@ public class SortingAlgorithms {
 		int last2 = last;
 
 		// Copy the two halves in temp (in increasing order)
-
+		while (first1 <= last1 && first2 <= last2) {
+			if (a[first1] <= a[first2]) {
+				temp[index++] = a[first1++];
+			} else {
+				temp[index++] = a[first2++];
+			}
+		}
 		// Anything left in the first half
-
+		while (first1 <= last1) {
+			temp[index++] = a[first1++];
+		}
 		// Anything left in the second half
-
+		while (first2 <= last2) {
+			temp[index++] = a[first2++];
+		}
 		// Copy temp in a
+		for (int i = 0; i < temp.length; i++) {
+			a[first + i] = temp[i];
+		}
 	}
 
 	/**
