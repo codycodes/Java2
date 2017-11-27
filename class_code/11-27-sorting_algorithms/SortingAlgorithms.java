@@ -178,9 +178,9 @@ public class SortingAlgorithms {
 	private void pickPivotAndSort(int first, int last) {
 		if (first < last) {
 			// pick the pivot
-
+			int pivot = pickPivotLocation(first, last);
 			// Place the pivot at the start of the array
-
+			swap(pivot, first);
 			// Go through the array: place to the left of the pivot, any
 			// element less than the pivot
 			int toTheLeft = first; // index of the last element
