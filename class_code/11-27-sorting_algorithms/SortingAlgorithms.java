@@ -98,6 +98,7 @@ public class SortingAlgorithms {
 	 * Sort the array with merge sort (a faster algorithm)
 	 */
 	public void mergeSort() {
+		divideInTwoSortAndMerge(0, a.length - 1);
 	}
 
 	/**
@@ -106,12 +107,14 @@ public class SortingAlgorithms {
 	private void divideInTwoSortAndMerge(int first, int last) {
 		if (first < last) {
 			// Midpoint
-
+			int mid = (first + last) / 2;
 			// Sort a[first,...,mid] (using divideInTwoSortAndMerge)
-
+			divideInTwoSortAndMerge(first, mid);
 			// Sort a[mid+1,...,last] (using divideInTwoSortAndMerge)
-
+			divideInTwoSortAndMerge(mid + 1, last);
 			// Merge sorted halves
+			merge(first, mid, last);
+			
 		}
 		// else
 		// Base case: nothing to do
@@ -123,12 +126,12 @@ public class SortingAlgorithms {
 	 * a[first,...,last] is sorted in increasing order
 	 */
 	private void merge(int first, int mid, int last) {
-
 		// Method: copy the two halves in a temp array in increasing order
 		// copy temp back in a
 
 		// Allocate a temp array on the heap
 		// temp must be big enough to receive the two halves of A
+		int[] temp = new int[last-first + 1];
 
 		// Index for temp
 		int index = 0;
